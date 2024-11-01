@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reatividade com Proxy e Atributos Personalizados</title>
+</head>
+<body>
+
+    <!-- Exemplo de Condicionais -->
+    <p data-if="state.displayTitle" data-title></p>
+    <p data-name></p>
+    <p data-if="state.name === 'Jon Doe'">Hello Jon Doe</p>
+    <p data-if="state.name === 'Victor'">Hello <span data-name></span></p>
+
+    <!-- Exemplo de Eventos -->
+    <button data-click="state.clickFunction()">click here</button>
+    <input type="text" data-change="state.changeFunction" placeholder="Digite algo..."/>
+
+    <hr>
+
+    <!-- Exemplo de Loop -->
+    <div data-for="product of state.productsArray">
+        <p>
+            <span data-product-id></span> <span data-product-title></span> <span data-product-price></span>
+        </p>
+    </div>
+
+    <h2>Lorem Ipsum</h2>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
