@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,13 @@
   "bugs": {
     "url": "https://github.com/devvime/reactivity-proxy/issues"
   },
-  "homepage": "https://github.com/devvime/reactivity-proxy#readme"
+  "homepage": "https://github.com/devvime/reactivity-proxy#readme",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babel-loader": "^9.2.1",
+    "babel-preset-minify": "^0.5.2",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
