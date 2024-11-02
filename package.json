@@ -1,0 +1,27 @@
+{
+  "name": "reactive-proxy",
+  "version": "1.0.0",
+  "description": "Library for reactivity with proxy and custom attributes in Javascript",
+  "main": "lib/ReactiveProxy.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devvime/reactivity-proxy.git"
+  },
+  "keywords": [
+    "Reactive",
+    "Proxy",
+    "States"
+  ],
+  "author": "Victor Mendes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devvime/reactivity-proxy/issues"
+  },
+  "homepage": "https://github.com/devvime/reactivity-proxy#readme"
+}
