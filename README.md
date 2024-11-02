@@ -11,7 +11,7 @@ npm install reactive-proxy
 ## Usage
 
 ```js
-import { ReactiveProxy } from "./src/ReactiveProxy.js";
+import { ReactiveProxy } from 'reactive-proxy';
 
 const state = new ReactiveProxy()
 

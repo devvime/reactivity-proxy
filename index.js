@@ -1,4 +1,4 @@
-import { ReactiveProxy } from "./src/ReactiveProxy.js";
+import { ReactiveProxy } from './lib/ReactiveProxy.js';
 
 const state = new ReactiveProxy()
 
