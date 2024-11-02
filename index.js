@@ -26,12 +26,12 @@ state.set({
     price: 10000,
     image: 'https://s3.amazonaws.com/car-images-bucket/vw/gol/gol-1.jpg',
     buyer: {
-      name: 'Jon',
+      name: 'Victor',
       phone: '55 11 99999-9999'
     }
   },
   clickFunction() {
-    state.change('title', 'Título Atualizado!');
+    state.change('title', 'Success!');
     state.change('name', 'Victor');
     state.push('productsArray', { id: 4, title: 'Product 3', price: '$30', data: { color: 'pink' } })
   },

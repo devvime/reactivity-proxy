@@ -15,16 +15,42 @@ export class ReactiveProxy {
     this.handleChange()
   }
 
+  // handleText() {
+  //   const setElementTextOrSrc = (itemPath, value) => {
+  //     let el = document.querySelector(`[data-${itemPath.join('-')}]`);
+  //     if (el) {
+  //       if (el.hasAttribute('src')) {
+  //         el.setAttribute('src', value);
+  //       } else {
+  //         el.innerText = value;
+  //       }
+  //     }
+  //   };
+  
+  //   const processObject = (obj, path = []) => {
+  //     Object.keys(obj).forEach(key => {
+  //       const newPath = [...path, key];
+  //       if (typeof obj[key] === 'object' && obj[key] !== null) {
+  //         processObject(obj[key], newPath); // chamada recursiva para objetos aninhados
+  //       } else {
+  //         setElementTextOrSrc(newPath, obj[key]);
+  //       }
+  //     });
+  //   };
+  
+  //   processObject(this.state);
+  // } 
+
   handleText() {
     const setElementTextOrSrc = (itemPath, value) => {
-      let el = document.querySelector(`[data-${itemPath.join('-')}]`);
-      if (el) {
+      let elements = document.querySelectorAll(`[data-${itemPath.join('-')}]`);
+      elements.forEach(el => {
         if (el.hasAttribute('src')) {
           el.setAttribute('src', value);
         } else {
           el.innerText = value;
         }
-      }
+      });
     };
   
     const processObject = (obj, path = []) => {
@@ -39,7 +65,8 @@ export class ReactiveProxy {
     };
   
     processObject(this.state);
-  } 
+  }
+  
 
   handleClick() {
     document.querySelectorAll('[data-click]').forEach(element => {
