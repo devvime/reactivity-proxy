@@ -5,15 +5,15 @@ Reactivity with Proxy and Custom Attributes
 ## Install
 
 ```bash
-npm install reactive-proxy
+npm i reactivity-proxy
 ```
 
 ## Usage
 
 ```js
-import { ReactiveProxy } from 'reactive-proxy';
+import { ReactivityProxy } from 'reactivity-proxy';
 
-const state = new ReactiveProxy()
+const state = new ReactivityProxy()
 
 state.set({
   title: 'Hello World!',

@@ -1,6 +1,6 @@
-import { ReactiveProxy } from './lib/ReactiveProxy.js';
+import { ReactivityProxy } from './lib/ReactivityProxy.js';
 
-const state = new ReactiveProxy()
+const state = new ReactivityProxy()
 
 state.set({
   title: 'Hello World!',
