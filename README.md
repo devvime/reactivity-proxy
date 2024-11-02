@@ -20,9 +20,9 @@ state.set({
   name: 'Jon Doe',
   displayTitle: true,
   productsArray: [
-    { id: 1, title: 'Product 1', price: '$10' },
-    { id: 2, title: 'Product 2', price: '$20' },
-    { id: 3, title: 'Product 3', price: '$30' }
+    { id: 1, title: 'Product 1', price: '$10', data: { color: 'green' } },
+    { id: 2, title: 'Product 2', price: '$20', data: { color: 'blue' } },
+    { id: 3, title: 'Product 3', price: '$30', data: { color: 'black' } }
   ],
   users: [
     { id: 1, name: 'Steve', email: 's@s.com' },
@@ -46,7 +46,7 @@ state.set({
   clickFunction() {
     state.change('title', 'Título Atualizado!');
     state.change('name', 'Victor');
-    state.push('productsArray', { id: 3, title: 'Product 3', price: '$30' })
+    state.push('productsArray', { id: 4, title: 'Product 3', price: '$30', data: { color: 'pink' } })
   },
   changeFunction(value) {
     state.change('title', value);
@@ -141,16 +141,19 @@ Loop event
 
 ```html
 <div data-for="product of state.productsArray">
-    <p><span data-product-id></span> <span data-product-title></span> <span data-product-price></span></p>
-</div> 
+    <p>
+        <span data-product-id></span> <span data-product-title></span> <span data-product-price></span> 
+        Color: <span data-product-data-color></span>
+    </p>
+</div>  
 ```
 
 Page result
 
 ```html
 <div>
-    <p><span>1</span> <span>Product 1</span> <span>$10</span></p>
-    <p><span>2</span> <span>Product 2</span> <span>$20</span></p>
-    <p><span>3</span> <span>Product 3</span> <span>$30</span></p>
+    <p><span>1</span> <span>Product 1</span> <span>$10</span> Color: <span>green</span></p>
+    <p><span>2</span> <span>Product 2</span> <span>$20</span> Color: <span>blue</span></p>
+    <p><span>3</span> <span>Product 3</span> <span>$30</span> Color: <span>black</span></p>
 </div> 
 ```

@@ -7,21 +7,24 @@
 </head>
 <body>
 
-    <!-- Exemplo de Condicionais -->
+    <!-- Conditionais -->
     <p data-if="state.displayTitle" data-title></p>
     <p data-name></p>
     <p data-if="state.name === 'Jon Doe'">Hello Jon Doe</p>
     <p data-if="state.name === 'Victor'">Hello <span data-name></span></p>
 
-    <!-- Exemplo de Eventos -->
+    <!-- Events -->
     <button data-click="state.clickFunction()">click here</button>
     <input type="text" data-change="state.changeFunction" placeholder="Digite algo..."/>
 
     <hr>
 
-    <!-- Exemplo de Loop -->
+    <!-- Loop -->
     <div data-for="product of state.productsArray">
-        <p><span data-product-id></span> <span data-product-title></span> <span data-product-price></span></p>
+        <p>
+            <span data-product-id></span> <span data-product-title></span> <span data-product-price></span> 
+            Color: <span data-product-data-color></span>
+        </p>
     </div>    
 
     <h2>Lorem Ipsum</h2>

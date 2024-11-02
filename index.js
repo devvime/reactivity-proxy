@@ -7,9 +7,9 @@ state.set({
   name: 'Jon Doe',
   displayTitle: true,
   productsArray: [
-    { id: 1, title: 'Product 1', price: '$10' },
-    { id: 2, title: 'Product 2', price: '$20' },
-    { id: 3, title: 'Product 3', price: '$30' }
+    { id: 1, title: 'Product 1', price: '$10', data: { color: 'green' } },
+    { id: 2, title: 'Product 2', price: '$20', data: { color: 'blue' } },
+    { id: 3, title: 'Product 3', price: '$30', data: { color: 'black' } }
   ],
   users: [
     { id: 1, name: 'Steve', email: 's@s.com' },
@@ -33,7 +33,7 @@ state.set({
   clickFunction() {
     state.change('title', 'Título Atualizado!');
     state.change('name', 'Victor');
-    state.push('productsArray', { id: 3, title: 'Product 3', price: '$30' })
+    state.push('productsArray', { id: 4, title: 'Product 3', price: '$30', data: { color: 'pink' } })
   },
   changeFunction(value) {
     state.change('title', value);

@@ -15,32 +15,6 @@ export class ReactiveProxy {
     this.handleChange()
   }
 
-  // handleText() {
-  //   let items = Object.keys(this.state);
-  //   items.forEach((item) => {
-  //     let el = document.querySelectorAll('[data-' + item + ']')
-  //     el.forEach(e => {
-  //       if (e) {
-  //         if (typeof this.state[item] === 'object' && this.state[item] !== null) {
-  //           const values = Object.keys(this.state[item]);
-  //           values.forEach(value => {
-  //             let elObj = document.querySelector(`[data-${item}-${value}]`)
-  //             if (elObj) {
-  //               if (elObj.hasAttribute('src')) {
-  //                 elObj.setAttribute('src', this.state[item][value]);
-  //               } else {
-  //                 elObj.innerText = this.state[item][value];
-  //               }
-  //             }
-  //           })            
-  //         } else {
-  //           e.innerText = this.state[item];
-  //         }
-  //       }
-  //     })
-  //   });
-  // }
-
   handleText() {
     const setElementTextOrSrc = (itemPath, value) => {
       let el = document.querySelector(`[data-${itemPath.join('-')}]`);
@@ -65,8 +39,7 @@ export class ReactiveProxy {
     };
   
     processObject(this.state);
-  }
-  
+  } 
 
   handleClick() {
     document.querySelectorAll('[data-click]').forEach(element => {
@@ -107,38 +80,79 @@ export class ReactiveProxy {
     });
   }
 
+  // handleEach() {
+  //   document.querySelectorAll('[data-for]').forEach(item => {
+  //     const output = []
+  //     const tpl = item.innerHTML
+  //     const exprssion = item.getAttribute('data-for').split(' of ')
+  //     const data = eval('this.' + exprssion[1])
+  
+  //     if(!data) return
+      
+  //     data.map(item => {
+  //       const itemTpl = this.createElement(tpl);
+  //       itemTpl.removeAttribute('[data-for]')
+  
+  //       Object.keys(item).map(key => {
+  //         itemTpl.querySelectorAll(`[data-${exprssion[0]}-${key}]`).forEach(e => {
+  //           if (e.hasAttribute('src')) {
+  //             e.setAttribute('src', item[key])
+  //           } else {
+  //             e.innerText = item[key]
+  //           }
+  //         })
+  //       })
+  
+  //       output.push(itemTpl)
+  //     })
+  
+  //     item.innerHTML = ''
+  //     output.forEach(el => {
+  //       item.appendChild(el)
+  //     })
+  //   })
+  // }
+
   handleEach() {
     document.querySelectorAll('[data-for]').forEach(item => {
-      const output = []
-      const tpl = item.innerHTML
-      const exprssion = item.getAttribute('data-for').split(' of ')
-      const data = eval('this.' + exprssion[1])
+      const output = [];
+      const tpl = item.innerHTML;
+      const expression = item.getAttribute('data-for').split(' of ');
+      const data = eval('this.' + expression[1]);
   
-      if(!data) return
-      
-      data.map(item => {
+      if (!data) return;
+  
+      data.map(itemData => {
         const itemTpl = this.createElement(tpl);
-        itemTpl.removeAttribute('[data-for]')
+        itemTpl.removeAttribute('data-for');
   
-        Object.keys(item).map(key => {
-          itemTpl.querySelectorAll(`[data-${exprssion[0]}-${key}]`).forEach(e => {
-            if (e.hasAttribute('src')) {
-              e.setAttribute('src', item[key])
+        const processObject = (obj, path = []) => {
+          Object.keys(obj).forEach(key => {
+            const newPath = [...path, key];
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+              processObject(obj[key], newPath);
             } else {
-              e.innerText = item[key]
+              const selector = `[data-${expression[0]}-${newPath.join('-')}]`;
+              itemTpl.querySelectorAll(selector).forEach(e => {
+                if (e.hasAttribute('src')) {
+                  e.setAttribute('src', obj[key]);
+                } else {
+                  e.innerText = obj[key];
+                }
+              });
             }
-          })
-        })
+          });
+        };
   
-        output.push(itemTpl)
-      })
+        processObject(itemData);
+        output.push(itemTpl);
+      });
   
-      item.innerHTML = ''
-      output.forEach(el => {
-        item.appendChild(el)
-      })
-    })
+      item.innerHTML = '';
+      output.forEach(el => item.appendChild(el));
+    });
   }
+  
 
   createElement(html) {
     const template = document.createElement("template")
