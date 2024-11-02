@@ -15,32 +15,6 @@ export class ReactiveProxy {
     this.handleChange()
   }
 
-  // handleText() {
-  //   const setElementTextOrSrc = (itemPath, value) => {
-  //     let el = document.querySelector(`[data-${itemPath.join('-')}]`);
-  //     if (el) {
-  //       if (el.hasAttribute('src')) {
-  //         el.setAttribute('src', value);
-  //       } else {
-  //         el.innerText = value;
-  //       }
-  //     }
-  //   };
-  
-  //   const processObject = (obj, path = []) => {
-  //     Object.keys(obj).forEach(key => {
-  //       const newPath = [...path, key];
-  //       if (typeof obj[key] === 'object' && obj[key] !== null) {
-  //         processObject(obj[key], newPath); // chamada recursiva para objetos aninhados
-  //       } else {
-  //         setElementTextOrSrc(newPath, obj[key]);
-  //       }
-  //     });
-  //   };
-  
-  //   processObject(this.state);
-  // } 
-
   handleText() {
     const setElementTextOrSrc = (itemPath, value) => {
       let elements = document.querySelectorAll(`[data-${itemPath.join('-')}]`);
@@ -107,39 +81,6 @@ export class ReactiveProxy {
     });
   }
 
-  // handleEach() {
-  //   document.querySelectorAll('[data-for]').forEach(item => {
-  //     const output = []
-  //     const tpl = item.innerHTML
-  //     const exprssion = item.getAttribute('data-for').split(' of ')
-  //     const data = eval('this.' + exprssion[1])
-  
-  //     if(!data) return
-      
-  //     data.map(item => {
-  //       const itemTpl = this.createElement(tpl);
-  //       itemTpl.removeAttribute('[data-for]')
-  
-  //       Object.keys(item).map(key => {
-  //         itemTpl.querySelectorAll(`[data-${exprssion[0]}-${key}]`).forEach(e => {
-  //           if (e.hasAttribute('src')) {
-  //             e.setAttribute('src', item[key])
-  //           } else {
-  //             e.innerText = item[key]
-  //           }
-  //         })
-  //       })
-  
-  //       output.push(itemTpl)
-  //     })
-  
-  //     item.innerHTML = ''
-  //     output.forEach(el => {
-  //       item.appendChild(el)
-  //     })
-  //   })
-  // }
-
   handleEach() {
     document.querySelectorAll('[data-for]').forEach(item => {
       const output = [];
@@ -178,8 +119,7 @@ export class ReactiveProxy {
       item.innerHTML = '';
       output.forEach(el => item.appendChild(el));
     });
-  }
-  
+  }  
 
   createElement(html) {
     const template = document.createElement("template")
