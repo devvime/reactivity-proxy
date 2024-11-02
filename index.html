@@ -21,13 +21,32 @@
 
     <!-- Exemplo de Loop -->
     <div data-for="product of state.productsArray">
-        <p>
-            <span data-product-id></span> <span data-product-title></span> <span data-product-price></span>
-        </p>
-    </div>
+        <p><span data-product-id></span> <span data-product-title></span> <span data-product-price></span></p>
+    </div>    
 
     <h2>Lorem Ipsum</h2>
 
-    <script src="script.js" type="module"></script>
+    <div data-for="user of state.users">
+        <p><span data-user-id></span> <span data-user-name></span> <span data-user-email></span></p>
+    </div>
+
+    <hr>
+
+    <div data-car>
+        <p>Vehicle:</p>
+        <p>Brand: <span data-car-brand></span></p>
+        <p>Model: <span data-car-model></span></p>
+        <p>Year: <span data-car-year></span></p>
+        <p>Engine: <span data-car-engine></span></p>
+        <p>Color: <span data-car-color></span></p>
+        <p>Transmission: <span data-car-transmission></span></p>
+        <p>Doors: <span data-car-doors></span></p>
+        <p>Price: <span data-car-price></span></p>
+        <img data-car-image src="" width="300px">
+        <p>Name: <span data-car-buyer-name></span></p>
+        <p>Phone: <span data-car-buyer-phone></span></p>
+    </div>
+
+    <script src="index.js" type="module"></script>
 </body>
 </html>

@@ -1,14 +1,12 @@
-export class Reactvity {
+export class ReactiveProxy {
 
   constructor() {
     this.state = new Proxy(
-      {
-
-      },
+      {},
       {
         set:(target, property, value) => {
           target[property] = value;
-          this.debounce(this.render(), 100);
+          this.resolve()
           return true;
         }
       }
@@ -17,17 +15,58 @@ export class Reactvity {
     this.handleChange()
   }
 
+  // handleText() {
+  //   let items = Object.keys(this.state);
+  //   items.forEach((item) => {
+  //     let el = document.querySelectorAll('[data-' + item + ']')
+  //     el.forEach(e => {
+  //       if (e) {
+  //         if (typeof this.state[item] === 'object' && this.state[item] !== null) {
+  //           const values = Object.keys(this.state[item]);
+  //           values.forEach(value => {
+  //             let elObj = document.querySelector(`[data-${item}-${value}]`)
+  //             if (elObj) {
+  //               if (elObj.hasAttribute('src')) {
+  //                 elObj.setAttribute('src', this.state[item][value]);
+  //               } else {
+  //                 elObj.innerText = this.state[item][value];
+  //               }
+  //             }
+  //           })            
+  //         } else {
+  //           e.innerText = this.state[item];
+  //         }
+  //       }
+  //     })
+  //   });
+  // }
+
   handleText() {
-    let items = Object.keys(this.state);
-    items.forEach((item) => {
-      let el = document.querySelectorAll('[data-' + item + ']')
-      el.forEach(e => {
-        if (e) {
-          e.innerText = this.state[item];
+    const setElementTextOrSrc = (itemPath, value) => {
+      let el = document.querySelector(`[data-${itemPath.join('-')}]`);
+      if (el) {
+        if (el.hasAttribute('src')) {
+          el.setAttribute('src', value);
+        } else {
+          el.innerText = value;
         }
-      })
-    });
+      }
+    };
+  
+    const processObject = (obj, path = []) => {
+      Object.keys(obj).forEach(key => {
+        const newPath = [...path, key];
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+          processObject(obj[key], newPath); // chamada recursiva para objetos aninhados
+        } else {
+          setElementTextOrSrc(newPath, obj[key]);
+        }
+      });
+    };
+  
+    processObject(this.state);
   }
+  
 
   handleClick() {
     document.querySelectorAll('[data-click]').forEach(element => {
@@ -70,10 +109,10 @@ export class Reactvity {
 
   handleEach() {
     document.querySelectorAll('[data-for]').forEach(item => {
+      const output = []
       const tpl = item.innerHTML
       const exprssion = item.getAttribute('data-for').split(' of ')
       const data = eval('this.' + exprssion[1])
-      const output = []
   
       if(!data) return
       
@@ -109,32 +148,24 @@ export class Reactvity {
 
   set(value) {
     this.state = value
+    this.resolve()
   }
 
   change(name, value) {
     this.state[name] = value
-    this.update()
+    this.resolve()
+  }
+
+  push(name, value) {
+    this.state[name].push(value)
+    this.resolve()
   }
 
   get() {
     return this.state
   }
 
-  render() {
-    this.handleText()
-    this.handleConditional()
-    this.handleEach()
-  }
-
-  debounce(func, delay) {
-    let timeout;
-    return function(...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), delay);
-    };
-  }
-
-  update() {
+  resolve() {
     this.handleText()
     this.handleConditional()
     this.handleEach()
