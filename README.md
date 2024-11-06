@@ -11,9 +11,7 @@ npm i reactivity-proxy
 ## Usage
 
 ```js
-import { ReactivityProxy } from 'reactivity-proxy';
-
-const state = new ReactivityProxy()
+import { state } from 'reactivity-proxy'
 
 state.set({
   title: 'Hello World!',
@@ -49,9 +47,9 @@ state.set({
     state.push('productsArray', { id: 4, title: 'Product 3', price: '$30', data: { color: 'pink' } })
   },
   changeFunction(value) {
-    state.change('title', value);
+    state.change('title', value)
   }
-})
+});
 
 state.resolve()
 ```
@@ -158,7 +156,7 @@ Page result
 </div> 
 ```
 
-Include elements
+### Include elements
 
 ```
 ├── components
@@ -180,17 +178,17 @@ import './nav.scss' // import style
 import element from './nav.html' // import html
 
 export const Nav = {
-  title: 'nav-tpl', // required
+  title: 'nav-tpl', // htm tag name
   init() {
     console.log('Nav element started')
   },
   render() {
-    return element // required
+    return element // return html
   }
 }
 ```
 
-Register all elements
+### Register all elements
 
 ```js
 import { Nav } from './components/nav/nav.js';
@@ -218,7 +216,7 @@ To include elements on the page, add an html tag with the element name.
     <!-- include nav element -->
     <nav-tpl></nav-tpl>
 
-    <main></main>
+    <section></section>
 
     <!-- include footer element -->
     <footer-tpl></footer-tpl>
