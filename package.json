@@ -1,6 +1,6 @@
 {
   "name": "reactivity-proxy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library for reactivity with proxy and custom attributes in Javascript",
   "main": "lib/ReactivityProxy.js",
   "directories": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
     "build": "webpack"
   },
   "repository": {
@@ -25,11 +26,21 @@
     "url": "https://github.com/devvime/reactivity-proxy/issues"
   },
   "homepage": "https://github.com/devvime/reactivity-proxy#readme",
+  "dependencies": {
+    "css-loader": "^7.1.2",
+    "sass": "^1.79.4",
+    "sass-loader": "^16.0.2",
+    "style-loader": "^4.0.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "babel-loader": "^9.2.1",
     "babel-preset-minify": "^0.5.2",
+    "mini-css-extract-plugin": "^2.9.1",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
   }

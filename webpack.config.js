@@ -1,13 +1,14 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './lib/ReactivityProxy.js',
+  entry: './index.js',
   devtool: "source-map",
   output: {
-    filename: 'reactivity-proxy.min.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist/js'),
   },
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -22,7 +23,31 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.(css|sass|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        use: ["html-loader"],
+        test: /\.html$/i,
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images',
+        },
       }
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '../css/main.css'
+    })
+  ]
 };

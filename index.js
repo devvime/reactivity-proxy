@@ -1,6 +1,12 @@
-import { ReactivityProxy } from './lib/ReactivityProxy.js';
+import { state } from './lib/ReactivityProxy.js';
 
-const state = new ReactivityProxy()
+import { Nav } from './components/nav/nav.js';
+import { Footer } from './components/footer/footer.js';
+
+state.registerElements([
+  ['nav-tpl', Nav],
+  ['footer-tpl', Footer]
+])
 
 state.set({
   title: 'Hello World!',

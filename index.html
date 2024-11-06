@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reatividade com Proxy e Atributos Personalizados</title>
+    <link rel="stylesheet" href="dist/css/main.css">
 </head>
 <body>
+
+    <nav-tpl></nav-tpl>
 
     <!-- Conditionais -->
     <p data-if="state.displayTitle" data-title></p>
@@ -49,6 +52,8 @@
         <p>Phone: <span data-car-buyer-phone></span></p>
     </div>
 
-    <script src="index.js" type="module"></script>
+    <footer-tpl></footer-tpl>
+
+    <script src="dist/js/main.js" type="module"></script>
 </body>
 </html>

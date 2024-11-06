@@ -1,4 +1,5 @@
 node_modules/
+components/
 webpack.config.js
 index.html
 index.js
