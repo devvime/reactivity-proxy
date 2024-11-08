@@ -1,6 +1,6 @@
 {
   "name": "reactivity-proxy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library for reactivity with proxy and custom attributes in Javascript",
   "main": "lib/ReactivityProxy.js",
   "directories": {
