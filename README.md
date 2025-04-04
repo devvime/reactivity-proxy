@@ -135,6 +135,18 @@ Change event
 <input type="text" data-change="state.changeFunction" placeholder="Type something..."/>
 ```
 
+Set input value
+
+```html
+<input type="text" value="" data-name />
+```
+
+Page result
+
+```html
+<input type="text" value="Jon Doe" />
+```
+
 Loop event
 
 ```html
